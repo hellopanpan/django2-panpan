@@ -4,10 +4,18 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from .forms import AddForm
 from .models import Person
+import json
+
 
 def index(request):
-  print()
-  return HttpResponse(list(Person.objects.values()))
+  data = Person.objects.all().skip(2).to_json()
+  # json.loads() 处理为字典
+  res = {
+    "code": 0,
+    "msg": "success",
+    "data": json.loads(data)
+  }
+  return JsonResponse(res)
 # Create your views here.
 def main(request): 
   return render(request, 'home.html')
