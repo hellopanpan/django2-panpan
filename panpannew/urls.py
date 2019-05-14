@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from xpanpan import views as xpanpan_views  # new
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('',xpanpan_views.index),
+    path('index/', xpanpan_views.main),
+    path('add', xpanpan_views.add),
+    path('admin/', admin.site.urls)
 ]
