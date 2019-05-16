@@ -13,3 +13,4 @@ class Movies(mongoengine.Document):
     title = mongoengine.StringField(max_length=30)
     link = mongoengine.StringField(max_length=30)
     desc = mongoengine.StringField(max_length=30)
+    price = mongoengine.IntField()

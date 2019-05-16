@@ -28,7 +28,7 @@ def index2(request):
   return JsonResponse(res)
 # Create your views here.
 def main(request): 
-  data = Movies.objects.all().to_json()
+  data = Movies.objects.all().order_by('price').to_json()
   context = {
     "data": json.loads(data)
   }
