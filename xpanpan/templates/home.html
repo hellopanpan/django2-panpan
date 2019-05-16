@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>自强学堂</title>
+    <title>潘潘之家</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .item{
+            height: 80px;
+            max-width: 950px;
+            min-width: 600px;
+            display: flex;
+            flex-direction: column;
+            background: #efefef;
+            justify-content: center;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+
+        }
+    </style>
 </head>
 <body>
- 
-<a href="/add?a=4&b=5">计算 4+5</a>
- 
+ {% if data %}
+    {{data.length}}
+    {% for item in data %}
+    <li class="item">
+        <span>{{item.title}}</span>
+        <a href="{{item.link}}">{{item.link}}</a>
+        <span>{{item.desc}}</span>
+    </li>
+    {% endfor%}
+ {% endif %}
 </body>
 </html>

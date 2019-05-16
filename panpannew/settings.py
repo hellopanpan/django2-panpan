@@ -86,7 +86,7 @@ DATABASES = {
     }
 }
 from mongoengine import connect
-connect('xpanpan')
+connect('scrapypan')
 
 
 # Password validation

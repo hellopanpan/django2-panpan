@@ -4,10 +4,20 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from .forms import AddForm
 from .models import Person
+from .models import Movies
 import json
 
 
 def index(request):
+  data = Movies.objects.all().to_json()
+  # json.loads() 处理为字典
+  res = {
+    "code": 0,
+    "msg": "success",
+    "data": json.loads(data)
+  }
+  return JsonResponse(res)
+def index2(request):
   data = Person.objects.all().skip(2).to_json()
   # json.loads() 处理为字典
   res = {
@@ -18,7 +28,11 @@ def index(request):
   return JsonResponse(res)
 # Create your views here.
 def main(request): 
-  return render(request, 'home.html')
+  data = Movies.objects.all().to_json()
+  context = {
+    "data": json.loads(data)
+  }
+  return render(request, 'home.html', context)
 
 def add(request): 
   Person.objects.create(name = 'panpan', age = 200)
