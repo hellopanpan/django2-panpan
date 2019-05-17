@@ -14,6 +14,7 @@ class Movies(mongoengine.Document):
     link = mongoengine.StringField(max_length=30)
     desc = mongoengine.StringField(max_length=30)
     location = mongoengine.StringField(max_length=30)
+    pic = mongoengine.StringField(max_length=30)
     price = mongoengine.IntField()
     unit = mongoengine.IntField()
     more = mongoengine.StringField(max_length=30)

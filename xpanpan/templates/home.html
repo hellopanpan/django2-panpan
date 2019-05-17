@@ -1,44 +1,65 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>潘潘之家</title>
+    <meta name="referrer" content="no-referrer" />
     <style>
         body{
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .item{
-            height: 120px;
+        .wrap{
+            height: 150px;
             max-width: 950px;
             min-width: 600px;
             display: flex;
-            flex-direction: column;
-            background: #efefef;
-            justify-content: center;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
             border-radius: 5px;
             margin-bottom: 10px;
             padding: 10px;
-
+            background: #efefef;
+        }
+        .pic{
+            height: 100px;
+            width: 100px; 
+            margin-right: 20px;
+        }
+        .pic img{
+            height: 100px;
+            width: 100px;
+        }
+        .item{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
         }
     </style>
 </head>
 <body>
  {% if data %}
-    {{data.length}}
     {% for item in data %}
-    <li class="item">
-        <span>{{item.title}}</span>
-        <div>
-            <span>价格: {{item.price}} w</span>
-            <span style="margin-left: 10px"> 单价: {{item.unit}} 元/平方m</span>
+    <li class="wrap">
+        <div class="pic">
+            <img src="{{item.pic}}" alt="">
         </div>
-        <div>
-            <span>{{item.location}}</span>
-            <span style="margin-left: 10px">{{item.more}}</span>
+        <div class="item">
+            <span>{{item.title}}</span>
+            <div>
+                <span>价格: {{item.price}} w</span>
+                <span style="margin-left: 10px"> 单价: {{item.unit}} 元/平方m</span>
+            </div>
+            <div>
+                <span>{{item.location}}</span>
+                <span style="margin-left: 10px">{{item.more}}</span>
+            </div>
+            <span>{{item.desc}}</span>
+            <a href="{{item.link}}" target="_blank" >{{item.link}}</a>
         </div>
-        <span>{{item.desc}}</span>
-        <a href="{{item.link}}" target="_blank" >{{item.link}}</a>
     </li>
     {% endfor%}
  {% endif %}
