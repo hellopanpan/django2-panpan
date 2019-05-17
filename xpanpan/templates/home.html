@@ -9,7 +9,7 @@
             align-items: center;
         }
         .item{
-            height: 80px;
+            height: 120px;
             max-width: 950px;
             min-width: 600px;
             display: flex;
@@ -29,9 +29,16 @@
     {% for item in data %}
     <li class="item">
         <span>{{item.title}}</span>
-        <span>价格: {{item.price}} w</span>
-        <a href="{{item.link}}" target="_blank" >{{item.link}}</a>
+        <div>
+            <span>价格: {{item.price}} w</span>
+            <span style="margin-left: 10px"> 单价: {{item.unit}} 元/平方m</span>
+        </div>
+        <div>
+            <span>{{item.location}}</span>
+            <span style="margin-left: 10px">{{item.more}}</span>
+        </div>
         <span>{{item.desc}}</span>
+        <a href="{{item.link}}" target="_blank" >{{item.link}}</a>
     </li>
     {% endfor%}
  {% endif %}
